@@ -89,8 +89,7 @@ class AlgoStrategy(gamelib.AlgoCore):
                        ) else firewall_locations[num_locations - (i//2) - 1]
 
             # place the destroyers
-            if(game_state.number_affordable(DESTRUCTOR) > 0 and
-               game_state.can_spawn(DESTRUCTOR, location)):
+            if(game_state.number_affordable(DESTRUCTOR) > 0):
                 game_state.attempt_spawn(DESTRUCTOR, location)
 
 
@@ -99,8 +98,7 @@ class AlgoStrategy(gamelib.AlgoCore):
                 for i in range(game_state.HALF_ARENA)[2:-2]]
 
         for location in firewall_locations:
-            if(game_state.number_affordable(ENCRYPTOR) > 0 and
-               game_state.can_spawn(ENCRYPTOR, location)):
+            if(game_state.number_affordable(ENCRYPTOR) > 0):
                 game_state.attempt_spawn(ENCRYPTOR, location)
 
         """
@@ -156,8 +154,7 @@ class AlgoStrategy(gamelib.AlgoCore):
         """
         for _ in range(13):
             rand = random.randint(0, 13)
-            if(game_state.number_affordable(EMP) > 0 and
-               game_state.can_spawn(EMP, [rand, 13 - rand])):
+            if(game_state.number_affordable(EMP) > 0):
                    game_state.attempt_spawn(EMP, [rand, 13 - rand])
                    break
 
@@ -172,8 +169,7 @@ class AlgoStrategy(gamelib.AlgoCore):
                                       game_state.ARENA_SIZE - 1)
 
                 num_pings = min(3, game_state.number_affordable(PING))
-                if(num_pings > 0 and game_state.can_spawn(PING,[rand,rand - 14],
-                                                          num_pings)):
+                if(num_pings > 0):
                     game_state.attempt_spawn(PING, [rand, rand - 14], num_pings)
                     break # if success on any of 5 tries, stop
 
